@@ -13,6 +13,7 @@ int main() {
     int num2 = 5;
 
     int result_if_else = find_biggest_if_else(num1, num2);
+    //using if-else statement
     printf("Using if-else: %d\n", result_if_else);
 
     return 0;

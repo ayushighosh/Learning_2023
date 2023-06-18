@@ -4,6 +4,7 @@ void printExponent(double x) {
     unsigned long long *ptr = (unsigned long long *)&x;
     unsigned long long exponent = (*ptr & 0x7FF0000000000000) >> 52;
     
+    //Print hexadecimal
     printf("Hexadecimal: 0x%llX\n", exponent);
     
     // Print binary representation

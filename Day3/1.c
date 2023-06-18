@@ -6,7 +6,7 @@ void printDecreasing(int n);
 
 int main() {
     int n;
-
+    //Print the Value  
     printf("Enter the value of n: ");
     scanf("%d", &n);
 

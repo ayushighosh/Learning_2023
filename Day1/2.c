@@ -9,8 +9,8 @@ int main() {
     int num2 = 5;
 
     int result_ternary = find_biggest_ternary(num1, num2);
+    //Using Ternary Operator 
     printf("Using ternary operator: %d\n", result_ternary);
 
     return 0;
 }
-

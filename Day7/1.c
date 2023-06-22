@@ -1,46 +1,34 @@
 #include <stdio.h>
 
-#define BUFFER_SIZE 4096
+struct Box {
+    double length;
+    double width;
+    double height;
+};
+
+double calculateVolume(struct Box* box) {
+    return box->length * box->width * box->height;
+}
+
+double calculateSurfaceArea(struct Box* box) {
+    return 2 * (box->length * box->width + box->length * box->height + box->width * box->height);
+}
 
 int main() {
-    FILE *sourceFile, *targetFile;
-    char sourcePath[100], targetPath[100];
-    char buffer[BUFFER_SIZE];
-    size_t bytesRead;
+    struct Box myBox;
+    struct Box* ptrBox = &myBox;
 
-    // Get the source file path from the user
-    printf("Enter the path of the source file: ");
-    scanf("%s", sourcePath);
+    // Assign values to the box dimensions
+    ptrBox->length = 2.5;
+    ptrBox->width = 3.0;
+    ptrBox->height = 4.0;
 
-    // Open the source file in read mode
-    sourceFile = fopen(sourcePath, "rb");
-    if (sourceFile == NULL) {
-        printf("Unable to open the source file.\n");
-        return 1;
-    }
+    // Calculate volume and surface area using (*) asterisk and (.) dot operators
+    double volume = calculateVolume(&myBox);
+    double surfaceArea = calculateSurfaceArea(&myBox);
 
-    // Get the target file path from the user
-    printf("Enter the path of the target file: ");
-    scanf("%s", targetPath);
-
-    // Open the target file in write mode
-    targetFile = fopen(targetPath, "wb");
-    if (targetFile == NULL) {
-        printf("Unable to create the target file.\n");
-        fclose(sourceFile);
-        return 1;
-    }
-
-    // Copy the contents of the source file to the target file
-    while ((bytesRead = fread(buffer, 1, BUFFER_SIZE, sourceFile)) > 0) {
-        fwrite(buffer, 1, bytesRead, targetFile);
-    }
-
-    printf("File copied successfully.\n");
-
-    // Close the files
-    fclose(sourceFile);
-    fclose(targetFile);
+    printf("Volume of the box: %.2f\n", volume);
+    printf("Surface area of the box: %.2f\n", surfaceArea);
 
     return 0;
 }
